@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
+                    Intent intent = new Intent(MainActivity.this,TeachersActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.textViewSignup:
 
-                startActivity(new Intent(this,SignUpActivity.class));
+                startActivity(new Intent(MainActivity.this,SignUpActivity.class));
 
                 break;
             case R.id.buttonLogin:

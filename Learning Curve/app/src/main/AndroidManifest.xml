@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminLogin"></activity>
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity
+            android:name=".TeachersActivity"
+            android:label="@string/title_activity_teachers"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AdminLogin" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".StartActivity">
