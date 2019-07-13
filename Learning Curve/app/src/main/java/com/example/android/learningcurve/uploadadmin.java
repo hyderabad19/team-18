@@ -14,13 +14,13 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +43,19 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference mDatabase;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uploadadmin);
@@ -51,12 +64,16 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
 
         editTextName = (EditText) findViewById(R.id.editText);
+        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
     }
+
     public void onClick(View view) {
         if (view == buttonChoose) {
+            Log.d("check1", "on click");
             showFileChooser();
         } else if (view == buttonUpload) {
             uploadFile();
@@ -71,7 +88,9 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select File"), PICK_IMAGE_REQUEST);
     }
+
     private void uploadFile() {
+        Log.d("check2", "uploadfile");
         //checking if file is available
         if (filePath != null) {
             //displaying progress dialog while image is uploading
@@ -93,9 +112,9 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
 
                             //displaying success toast
                             Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_LONG).show();
-                            StringBuilder newstringbuilder=new StringBuilder();
-                            newstringbuilder.append("https://firebasestorage.googleapis.com/v0/b/learning-curve-4d44d.appspot.com/o/");
-                            String path=taskSnapshot.getStorage().getPath().substring(9);
+                            StringBuilder newstringbuilder = new StringBuilder();
+                            newstringbuilder.append("https://firebasestorage.googleapis.com/v0/b/learning-curve-4d44d.app   spot.com/o/");
+                            String path = taskSnapshot.getStorage().getPath().substring(9);
                             newstringbuilder.append(path);
                             newstringbuilder.append("?alt=media");
 
@@ -126,6 +145,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
             //display an error if no file is selected
         }
     }
+
     public String getFileExtension(Uri uri) {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
