@@ -26,6 +26,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class uploadadmin extends AppCompatActivity implements View.OnClickListener {
 
@@ -119,7 +120,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
                             newstringbuilder.append("?alt=media");
 
                             //creating the upload object to store uploaded image details
-                            Upload upload = new Upload(editTextName.getText().toString().trim(), newstringbuilder.toString());
+                            Upload upload = new Upload(editTextName.getText().toString().trim(), newstringbuilder.toString(),0,0,new ArrayList<String>());
 
                             //adding an upload to firebase database
                             String uploadId = mDatabase.push().getKey();
