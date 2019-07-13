@@ -35,6 +35,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
     private Button buttonChoose;
     private Button buttonUpload;
     private EditText editTextName;
+    private int data;
 
     //uri to store file
     private Uri filePath;
@@ -42,6 +43,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
     //firebase objects
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
+    private DatabaseReference datavalueref;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -64,8 +66,14 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
 
+
         editTextName = (EditText) findViewById(R.id.editText);
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        datavalueref = FirebaseDatabase.getInstance().getReference(Constants.DATAVAL);
+        //Log.d("key value", datavalueref.getKey());
+        data=0;
+        datavalueref.child(Constants.KEYID).setValue(data);
+
         storageReference = FirebaseStorage.getInstance().getReference();
 
         buttonChoose.setOnClickListener(this);
@@ -118,9 +126,10 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
                             String path = taskSnapshot.getStorage().getPath().substring(9);
                             newstringbuilder.append(path);
                             newstringbuilder.append("?alt=media");
+                            data++;
 
                             //creating the upload object to store uploaded image details
-                            Upload upload = new Upload(editTextName.getText().toString().trim(), newstringbuilder.toString(),0,0,new ArrayList<String>());
+                            Upload upload = new Upload(editTextName.getText().toString().trim(), newstringbuilder.toString(), 0, data, new ArrayList<String>());
 
                             //adding an upload to firebase database
                             String uploadId = mDatabase.push().getKey();
