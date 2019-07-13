@@ -21,60 +21,50 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UploadScreen extends AppCompatActivity {
 
-    private RadioGroup radioGroup;
-    private TextView textView;
-    private Button btn;
-    public static int selectedId;
-
-    private StorageReference StorageRef;
+    private RadioGroup radiofiles;
+    private Button uploadbtn;
+    private RadioButton radiobtn;
+    content c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_screen);
 
-        StorageRef = FirebaseStorage.getInstance().getReference();
-        btn=findViewById(R.id.upload);
-        radioGroup=(RadioGroup)findViewById(R.id.files);
-        textView=findViewById(R.id.tv);
+        uploadbtn=findViewById(R.id.upload);
+        radiofiles=findViewById(R.id.files);
 
-        selectedId = radioGroup.getCheckedRadioButtonId();
-        textView.setText(String.valueOf(selectedId));
-        if(selectedId==-1){
-            Toast.makeText(UploadScreen.this,"Nothing selected", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(UploadScreen.this,String.valueOf(selectedId), Toast.LENGTH_SHORT).show();
-        }
-        btn.setOnClickListener(new View.OnClickListener() {
+        uploadbtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-                StorageReference riversRef = StorageRef.child("images/rivers.jpg");
+            public void onClick(View v) {
 
-                riversRef.putFile(file)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                // Get a URL to the uploaded content
-                                Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                // Handle unsuccessful uploads
-                                // ...
-                            }
-                        });
-//                Intent i=new Intent(UploadScreen.this,demo.class);
-//                startActivity(i);
-                Toast.makeText(UploadScreen.this,"Upload done", Toast.LENGTH_SHORT).show();
+                // get selected radio button from radioGroup
+                int selectedId = radiofiles.getCheckedRadioButtonId();
+                radiobtn=findViewById(selectedId);
+
+                // find the radiobutton by returned id
+//                radiobtn = (RadioButton) findViewById(selectedId);
+
+                Toast.makeText(UploadScreen.this, radiobtn.getText(), Toast.LENGTH_SHORT).show();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("content");
+
+                c=new content();
+                c.setUrl("demo");
+                c.setLikes(2);
+                c.setComments("hi");
+                //myRef.child("product" + (++i)).setValue(p);
+                myRef.child(String.valueOf(radiobtn.getText())).setValue(c);
+
 
             }
+
         });
     }
 }
