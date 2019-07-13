@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "916692617284",
+    "firebase_url": "https://fireapp-ebedd.firebaseio.com",
+    "project_id": "fireapp-ebedd",
+    "storage_bucket": "fireapp-ebedd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916692617284:android:66fa35fd8bf10431",
+        "android_client_info": {
+          "package_name": "com.example.fireapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916692617284-ag7p58ltfkfgpuc6nhpgbqkluqo1ok21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSooaAJ2yUbJGpB4SbjfI-pO4D_eF6Rrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916692617284-ag7p58ltfkfgpuc6nhpgbqkluqo1ok21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

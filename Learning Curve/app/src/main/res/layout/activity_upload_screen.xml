@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".UploadScreen">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".UploadScreen">
+
+<RadioGroup
+    android:id="@+id/files"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/upload"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="159dp"
+    android:layout_marginBottom="97dp"
+    tools:layout_editor_absoluteX="97dp"
+    tools:layout_editor_absoluteY="58dp">
+
+    <RadioButton
+        android:id="@+id/video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/files"
+        android:layout_weight="1"
+        android:text="Video" />
+
+    <RadioButton
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Text" />
+
+    <RadioButton
+        android:id="@+id/other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Others" />
+
+
+</RadioGroup>
+
+<Button
+    android:id="@+id/upload"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginStart="163dp"
+    android:layout_marginEnd="160dp"
+    android:layout_marginBottom="354dp"
+    android:text="Upload" />
+
+</RelativeLayout>
