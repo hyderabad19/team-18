@@ -5,18 +5,24 @@ import android.os.Bundle;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.List;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 public class Search extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
     ArrayList<String> list;
     ArrayAdapter<String > adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
