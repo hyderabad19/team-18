@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "182657904299",
+    "firebase_url": "https://learning-curve-e89a2.firebaseio.com",
+    "project_id": "learning-curve-e89a2",
+    "storage_bucket": "learning-curve-e89a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182657904299:android:1c4470a9590a8c79",
+        "android_client_info": {
+          "package_name": "com.example.android.learningcurve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182657904299-ot9q4ba373ne1ctiudvttfl4eneagvcp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.learningcurve",
+            "certificate_hash": "5c61d57e3d7a26d2d7c273f2caf37c438e18f063"
+          }
+        },
+        {
+          "client_id": "182657904299-efvbtjsrl5qlap7uauj5p7tdoa9titd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIsf1pALJ5MCAFuxy1VOFfv5EIPpfdy8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182657904299-efvbtjsrl5qlap7uauj5p7tdoa9titd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
