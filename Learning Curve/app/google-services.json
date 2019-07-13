@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "319967704900",
+    "firebase_url": "https://learning-curve-fa367.firebaseio.com",
+    "project_id": "learning-curve-fa367",
+    "storage_bucket": "learning-curve-fa367.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319967704900:android:1c4470a9590a8c79",
+        "android_client_info": {
+          "package_name": "com.example.android.learningcurve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319967704900-als31ppq9n3i3udamn6o41di5f26lp9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.learningcurve",
+            "certificate_hash": "897c244dc4f225386e1f5ecfbf5f0678324077d6"
+          }
+        },
+        {
+          "client_id": "319967704900-vkc8lucccqj29067bakerito3m1f3b85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD26EMNsMsZBdriEW1-nqIMWDCH3whi3cY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319967704900-vkc8lucccqj29067bakerito3m1f3b85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
