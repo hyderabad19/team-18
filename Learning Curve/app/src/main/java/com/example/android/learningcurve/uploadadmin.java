@@ -73,7 +73,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
 
     public void onClick(View view) {
         if (view == buttonChoose) {
-            Log.d("check1", "on click");
+
             showFileChooser();
         } else if (view == buttonUpload) {
             uploadFile();
@@ -90,7 +90,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
     }
 
     private void uploadFile() {
-        Log.d("check2", "uploadfile");
+
         //checking if file is available
         if (filePath != null) {
             //displaying progress dialog while image is uploading
@@ -113,7 +113,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
                             //displaying success toast
                             Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_LONG).show();
                             StringBuilder newstringbuilder = new StringBuilder();
-                            newstringbuilder.append("https://firebasestorage.googleapis.com/v0/b/learning-curve-4d44d.app   spot.com/o/");
+                            newstringbuilder.append("https://firebasestorage.googleapis.com/v0/b/learning-curve-4d44d.appspot.com/o/uploads%2F");
                             String path = taskSnapshot.getStorage().getPath().substring(9);
                             newstringbuilder.append(path);
                             newstringbuilder.append("?alt=media");
@@ -130,6 +130,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             progressDialog.dismiss();
+                            editTextName.setText("");
                             Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     })
@@ -137,6 +138,7 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             //displaying the upload progress
+                            editTextName.setText("");
                             double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                             progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
                         }
