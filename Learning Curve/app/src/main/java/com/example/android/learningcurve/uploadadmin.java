@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -36,6 +35,8 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
     private Button buttonUpload;
     private EditText editTextName;
     private int data;
+    private Button analysisbutton;
+    private Button logout;
 
     //uri to store file
     private Uri filePath;
@@ -65,19 +66,23 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
 
         buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (Button) findViewById(R.id.buttonUpload);
+        analysisbutton = (Button) findViewById(R.id.analysis);
+        logout = (Button) findViewById(R.id.logout);
 
 
         editTextName = (EditText) findViewById(R.id.editText);
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
         datavalueref = FirebaseDatabase.getInstance().getReference(Constants.DATAVAL);
         //Log.d("key value", datavalueref.getKey());
-        data=0;
+        data = 0;
         datavalueref.child(Constants.KEYID).setValue(data);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
         buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
+        analysisbutton.setOnClickListener(this);
+        logout.setOnClickListener(this);
     }
 
     public void onClick(View view) {
@@ -88,7 +93,14 @@ public class uploadadmin extends AppCompatActivity implements View.OnClickListen
             uploadFile();
             Toast.makeText(uploadadmin.this, "Uploading File", Toast.LENGTH_LONG).show();
 
+        } else if (view == analysisbutton) {
+            Intent intent = new Intent(uploadadmin.this, BarGraph.class);
+            startActivity(intent);
+        } else if (view == logout) {
+            Intent intent = new Intent(uploadadmin.this, StartActivity.class);
+            startActivity(intent);
         }
+
     }
 
     private void showFileChooser() {

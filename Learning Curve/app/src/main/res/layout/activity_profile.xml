@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".uploadadmin">
+    tools:context=".profile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,20 +11,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="name of file" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,40 +18,44 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonChoose"
+            <TextView
+                android:id="@+id/Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="Choose" />
 
-            <Button
-                android:id="@+id/buttonUpload"
+                android:text="Email" />
+
+            <TextView
+                android:layout_margin="10dp"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Upload" />
-
-            <Button
-                android:id="@+id/analysis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Analysis" />
-
+                android:layout_gravity="center"
+                android:text="TextView" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/logout"
+            <EditText
+                android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="logout" />
+                android:layout_margin="10dp"
+                android:inputType="textPersonName"
+                android:text="Password" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Change Password" />
         </LinearLayout>
 
     </LinearLayout>
